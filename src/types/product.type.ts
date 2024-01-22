@@ -1,12 +1,12 @@
 type ProductType = {
-  id: number | string;
-  title: string;
-  price: number;
-  description: string;
-  images: string[];
-  creationAt: string;
-  updatedAt: string;
-  category: CategoryType;
+  readonly id: number;
+  readonly title: string;
+  readonly price: number;
+  readonly description: string;
+  readonly images: string[];
+  readonly creationAt: string;
+  readonly updatedAt: string;
+  readonly category: CategoryType;
 };
 
 export default ProductType;

@@ -1,7 +1,7 @@
 type CategoryType = {
-  id?: number | string;
-  name: string;
-  image: string;
-  updatedAt: string;
-  category: number;
+  readonly id: number;
+  readonly name: string;
+  readonly image: string;
+  readonly updatedAt: string;
+  readonly category: number;
 };
