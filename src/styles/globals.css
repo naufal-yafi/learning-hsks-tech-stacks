@@ -14,4 +14,8 @@
   .btn-outline {
     @apply btn bg-white text-black border border-black;
   }
+
+  .btn-secondary {
+    @apply btn bg-neutral-100 text-black border-neutral-100;
+  }
 }

@@ -5,14 +5,14 @@ import useSWR from "swr";
 
 const useProductDetail = (
   id: number,
-): { products: ProductType; error: string; loading: boolean } => {
+): { product: ProductType; error: string; loading: boolean } => {
   const { data, error, isLoading } = useSWR(
     `${config.api_url.products}/${id}`,
     fetcher,
   );
 
   return {
-    products: data,
+    product: data,
     error,
     loading: isLoading,
   };

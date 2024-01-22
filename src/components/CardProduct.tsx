@@ -11,7 +11,7 @@ const CardProduct = (props: {
   return (
     <div className="w-full border-b border-r border-black">
       <Link href={`/store/${props.id}`}>
-        <figure className="min-w-0 flex">
+        <figure className="min-w-0 flex border-b border-black">
           <Carousel images={props.images} />
         </figure>
       </Link>
