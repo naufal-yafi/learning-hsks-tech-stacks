@@ -4,7 +4,7 @@
 
 @layer components {
   main {
-    @apply pt-20;
+    @apply pt-14;
   }
 
   .btn {
