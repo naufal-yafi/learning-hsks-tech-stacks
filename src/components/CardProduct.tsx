@@ -9,27 +9,25 @@ const CardProduct = (props: {
   price: number;
 }) => {
   return (
-    <div className="w-full border-b border-r border-black">
+    <div className="cardproduct__container">
       <Link href={`/store/${props.id}`}>
-        <figure className="min-w-0 flex border-b border-black">
-          <div className="overflow-hidden h-[220px] w-full">
-            <Carousel images={props.images} />
-          </div>
+        <figure className="cardproduct__figure">
+          <Carousel images={props.images} />
         </figure>
       </Link>
-      <figcaption className="px-5 py-5">
+      <figcaption className="cardproduct__figcaption">
         <Link href={`/store/${props.id}`}>
           <h1 className="text-lg line-clamp-2 hover:underline">
             {props.title}
           </h1>
         </Link>
 
-        <p className="text-xs line-clamp-4 mt-1">{props.description}</p>
+        <p className="mt-1 text-xs line-clamp-4">{props.description}</p>
 
-        <div className="mt-5 flex gap-3 justify-start items-center">
+        <div className="cardproduct__footer">
           <h2>
             <span className="text-xs">$</span>
-            <span className="font-bold text-xl">{props.price}</span>
+            <span className="text-xl font-bold">{props.price}</span>
           </h2>
 
           <button className="btn">Buy Now</button>

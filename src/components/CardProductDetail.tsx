@@ -11,43 +11,41 @@ const CardProductDetail = (props: { id: number }) => {
   const { product, loading } = useProductDetail(props.id);
 
   return (
-    <section className="px-6 lg:px-32">
+    <section className="container-padding">
       {loading ? (
         <LoadingCardProductDetail />
       ) : (
         <>
           <Link href="/">
-            <button className="btn-secondary mb-5">
-              <p className="flex justify-center items-center gap-4">
+            <button className="mb-5 btn-secondary">
+              <p className="flex-center gap-4">
                 <FiArrowLeft size={"1.5em"} />
-                Back
+                Home
               </p>
             </button>
           </Link>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2">
-            <figure className="w-full lg:w-[450px] h-[450px] overflow-hidden mb-5">
+          <div className="cardproduct_detail_container">
+            <figure className="cardproduct_detail_figure">
               <Carousel images={product?.images} />
             </figure>
 
-            <figcaption className="flex flex-col items-start">
+            <figcaption className="cardproduct_detail_figcaption">
               <h1 className="text-lg">{product.title}</h1>
 
-              <p className="flex justify-center items-center gap-4">
-                <span className="text-xs px-2 py-1 rounded-full bg-neutral-200">
-                  {product.category.name}
-                </span>
+              <p className="cardproduct_detail_price">
+                <span className="label">{product.category.name}</span>
                 <span className="text-xs">
-                  $<span className="font-bold text-xl">{product.price}</span>
+                  $<span className="text-xl font-bold">{product.price}</span>
                 </span>
               </p>
 
-              <p className="text-xs mt-2">{product.description}</p>
-              <p className="text-[0.65rem] mt-1">
+              <p className="mt-2 text-xs">{product.description}</p>
+              <p className="mt-1 text-[0.65rem]">
                 ~ {Utils.formatDate(product.creationAt, product.updatedAt)}
               </p>
 
-              <button className="btn w-full mt-5">Buy Now</button>
+              <button className="w-full mt-5 btn">Buy Now</button>
             </figcaption>
           </div>
         </>

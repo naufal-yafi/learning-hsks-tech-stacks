@@ -8,7 +8,7 @@ const Pagination = (props: { currentPage: number }) => {
   const { pagination } = useGetPagination();
 
   return (
-    <section className="flex gap-1 mt-5 justify-center items-center px-6 lg:px-32 flex-wrap">
+    <section className="container-padding mt-5 flex-center flex-wrap gap-1">
       <EachRender
         of={pagination}
         render={(item: number) => (
