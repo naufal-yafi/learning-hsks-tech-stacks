@@ -1,23 +1,43 @@
-import ProductType from "@type/product.type";
 import Image from "next/image";
+import Link from "next/link";
 
-const CardProduct = (props: ProductType) => {
+const CardProduct = (props: {
+  id: number | string;
+  images: string[];
+  title: string;
+  description: string;
+  price: number;
+}) => {
   return (
     <div className="w-full border-b border-r border-black">
-      <figure>
-        <Image src={props.images[0]} alt="product image" />
-      </figure>
+      <Link href={`/store/${props.id}`}>
+        <figure>
+          <Image
+            src={props.images[0]}
+            alt="product image"
+            width={800}
+            height={1200}
+            quality={100}
+            className="border-b border-black"
+          />
+        </figure>
+      </Link>
       <figcaption className="px-5 py-5">
-        <h1 className="text-lg">{props.title}</h1>
-        <p className="text-xs">{props.description}</p>
+        <Link href={`/store/${props.id}`}>
+          <h1 className="text-lg line-clamp-2 hover:underline">
+            {props.title}
+          </h1>
+        </Link>
 
-        <div className="mt-3 flex gap-3 justify-start items-center">
+        <p className="text-xs line-clamp-4 mt-1">{props.description}</p>
+
+        <div className="mt-5 flex gap-3 justify-start items-center">
           <h2>
-            <span className="text-xs">$</span>{" "}
-            <span className="font-bold">{props.price}</span>
+            <span className="text-xs">$</span>
+            <span className="font-bold text-xl">{props.price}</span>
           </h2>
 
-          <button className="btn bg-black text-white">Buy Now</button>
+          <button className="btn">Buy Now</button>
         </div>
       </figcaption>
     </div>

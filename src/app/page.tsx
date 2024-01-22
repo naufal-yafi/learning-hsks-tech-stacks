@@ -1,6 +1,7 @@
 "use client";
 
-import useGetPagination from "@hook/useGetPagination";
+import CardProduct from "@component/CardProduct";
+import Pagination from "@component/Pagination";
 import useProductsPagination from "@hook/useProductsPagination";
 import ProductType from "@type/product.type";
 
@@ -12,7 +13,6 @@ export default function Home({
   const CURRENT_PAGE: number = Number(searchParams.page ?? 1);
 
   const { products, loading } = useProductsPagination(CURRENT_PAGE);
-  const { pagination } = useGetPagination();
 
   return (
     <main className="pt-20">
@@ -22,12 +22,20 @@ export default function Home({
         ) : (
           <>
             {products?.map((item: ProductType) => (
-              <p key={item.id}>{item.title}</p>
+              <CardProduct
+                id={item.id}
+                key={item.id}
+                title={item.title}
+                images={item.images}
+                description={item.description}
+                price={item.price}
+              />
             ))}
           </>
         )}
       </section>
-      {loading ? <>Loading...</> : <>{JSON.stringify(pagination)}</>}
+
+      <Pagination currentPage={CURRENT_PAGE} />
     </main>
   );
 }
