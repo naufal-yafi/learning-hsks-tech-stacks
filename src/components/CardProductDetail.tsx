@@ -3,6 +3,7 @@ import Utils from "@lib/utils";
 import Link from "next/link";
 import { FiArrowLeft } from "react-icons/fi";
 import { Carousel } from "./Carousel";
+import LoadingCardProductDetail from "./Loading/LoadingCardProductDetail";
 
 const CardProductDetail = (props: { id: number }) => {
   const { product, loading } = useProductDetail(props.id);
@@ -10,7 +11,7 @@ const CardProductDetail = (props: { id: number }) => {
   return (
     <section className="px-6 lg:px-32">
       {loading ? (
-        <>Loading...</>
+        <LoadingCardProductDetail />
       ) : (
         <>
           <Link href="/">
@@ -23,7 +24,7 @@ const CardProductDetail = (props: { id: number }) => {
           </Link>
 
           <div className="grid grid-cols-1 lg:grid-cols-2">
-            <figure className="w-full lg:w-[450px] mb-5">
+            <figure className="w-full lg:w-[450px] h-[450px] overflow-hidden mb-5">
               <Carousel images={product?.images} />
             </figure>
 
