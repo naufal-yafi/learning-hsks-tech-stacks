@@ -3,8 +3,10 @@ type ProductType = {
   title: string;
   price: number;
   description: string;
-  category: number;
   images: string[];
+  creationAt: string;
+  updatedAt: string;
+  category: CategoryType;
 };
 
 export default ProductType;

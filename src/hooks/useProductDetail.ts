@@ -5,7 +5,7 @@ import useSWR from "swr";
 
 const useProductDetail = (
   id: number,
-): { products: Promise<ProductType>; error: string; loading: boolean } => {
+): { products: ProductType; error: string; loading: boolean } => {
   const { data, error, isLoading } = useSWR(
     `${config.api_url.products}/${id}`,
     fetcher,
