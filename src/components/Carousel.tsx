@@ -17,7 +17,7 @@ export const Carousel = (props: { images: string[] }) => {
               width={800}
               height={1200}
               quality={100}
-              className="w-full border-b border-black"
+              className="w-full"
             />
           )}
         />

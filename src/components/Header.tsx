@@ -1,9 +1,11 @@
+"use client";
+
 import Link from "next/link";
 import { FiBox, FiShoppingCart } from "react-icons/fi";
 
 const Header = () => {
   return (
-    <header className="fixed top-0 left-0 h-14 px-6 lg:px-32 flex justify-between items-center bg-white w-full z-10">
+    <header className="fixed top-0 left-0 h-14 px-6 lg:px-32 flex justify-between items-center bg-white w-full z-10 border-b border-black">
       <div>
         <Link href="/">
           <span className="flex gap-2 justify-center items-center">
