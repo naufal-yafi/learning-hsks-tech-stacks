@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import { Carousel } from "./Carousel";
 
 const CardProduct = (props: {
   id: number | string;
@@ -11,15 +11,8 @@ const CardProduct = (props: {
   return (
     <div className="w-full border-b border-r border-black">
       <Link href={`/store/${props.id}`}>
-        <figure>
-          <Image
-            src={props.images[0]}
-            alt="product image"
-            width={800}
-            height={1200}
-            quality={100}
-            className="border-b border-black"
-          />
+        <figure className="min-w-0 flex">
+          <Carousel images={props.images} />
         </figure>
       </Link>
       <figcaption className="px-5 py-5">

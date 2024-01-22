@@ -9,7 +9,7 @@ export default function Home({
   const CURRENT_PAGE: number = Number(searchParams.page ?? 1);
 
   return (
-    <main className="pt-20">
+    <main>
       <ListAllProduct page={CURRENT_PAGE} />
       <Pagination currentPage={CURRENT_PAGE} />
     </main>
