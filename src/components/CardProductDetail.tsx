@@ -1,3 +1,5 @@
+"use client";
+
 import useProductDetail from "@hook/useProductDetail";
 import Utils from "@lib/utils";
 import Link from "next/link";
