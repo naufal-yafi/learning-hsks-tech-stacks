@@ -22,7 +22,7 @@ const Header = () => {
           </button>
         </Link>
 
-        <Link href="/shop">
+        <Link href="/store/cart">
           <span className="flex-center">
             <p className="absolute px-2 text-xs translate-x-[14px] translate-y-[-8px] rounded-full bg-red-600 text-white">
               0
