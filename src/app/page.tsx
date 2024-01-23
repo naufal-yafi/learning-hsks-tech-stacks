@@ -1,5 +1,5 @@
-import ListAllProduct from "@component/ListAllProducts";
-import Pagination from "@component/Pagination";
+import ListAllProduct from "@each_render/ListAllProducts";
+import Pagination from "@each_render/Pagination";
 
 export default function Home({
   searchParams,

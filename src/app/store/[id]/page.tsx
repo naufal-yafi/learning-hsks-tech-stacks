@@ -1,6 +1,9 @@
-"use client";
+import CardProductDetail from "@component/Card/CardProductDetail";
+import type { Metadata } from "next";
 
-import CardProductDetail from "@component/CardProductDetail";
+export const metadata: Metadata = {
+  title: "Product Detail | Store",
+};
 
 export default function ProductDetail({
   params,

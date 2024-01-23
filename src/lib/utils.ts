@@ -8,6 +8,9 @@ const Utils = {
       year: "numeric",
     });
   },
+  fixUrlImg: (url: string): string => {
+    return url.replace(/\\|\["|"]/g, "");
+  },
 };
 
 export default Utils;

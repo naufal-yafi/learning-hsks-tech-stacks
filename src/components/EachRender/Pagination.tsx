@@ -8,15 +8,17 @@ const Pagination = (props: { currentPage: number }) => {
   const { pagination } = useGetPagination();
 
   return (
-    <section className="flex gap-1 mt-5 justify-center items-center px-6 lg:px-32 flex-wrap">
+    <section className="container-padding mt-5 flex-center flex-wrap gap-1">
       <EachRender
         of={pagination}
-        render={(item: number) => (
-          <Link key={item} href={`/?page=${item}`}>
+        render={(pageNumber: number) => (
+          <Link key={pageNumber} href={`/?page=${pageNumber}`}>
             <button
-              className={props.currentPage === item ? "btn" : "btn-outline"}
+              className={
+                props.currentPage === pageNumber ? "btn" : "btn-outline"
+              }
             >
-              {item}
+              {pageNumber}
             </button>
           </Link>
         )}
