@@ -38,6 +38,14 @@ export default function SearchPage() {
       </section>
 
       <section
+        className={`container-padding mt-2 text-xs ${
+          inputValue.length > 0 && inputValue.length < 4 ? "block" : "hidden"
+        }`}
+      >
+        Require input {inputValue.length}/4
+      </section>
+
+      <section
         className={`container-padding text-center my-8 ${
           inputValue.length > 3 && !isFind ? "block" : "hidden"
         }`}
@@ -55,12 +63,22 @@ export default function SearchPage() {
         </p>
       </section>
 
-      <div className="border-t border-black mt-8">
-        {isFind ? (
+      <div className={inputValue.length > 3 ? "block" : "hidden"}>
+        <div
+          className={`border-t border-black mt-8 ${
+            isFind ? "block" : "hidden"
+          }`}
+        >
           <ListAllProduct products={result} loading={loading} />
-        ) : (
-          <ListAllProduct products={products} loading={loading} />
-        )}
+        </div>
+      </div>
+
+      <div
+        className={`border-t border-black mt-8 ${
+          inputValue.length < 1 ? "block" : "hidden"
+        }`}
+      >
+        <ListAllProduct products={products} loading={loading} />
       </div>
     </>
   );
