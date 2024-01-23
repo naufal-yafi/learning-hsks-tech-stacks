@@ -1,17 +1,15 @@
 "use client";
 
+import ButtonAddToCart from "@component/ButtonAddToCart";
 import ButtonBackToHome from "@component/ButtonBackToHome";
 import { Carousel } from "@each_render/Carousel";
 import useProductDetail from "@hook/useProductDetail";
 import Utils from "@lib/utils";
-import useCart from "@lib/zustand/cart";
 import LoadingCardProductDetail from "@skeleton/LoadingCardProductDetail";
 import React from "react";
 
 const CardProductDetail = (props: { id: number }) => {
   const { product, loading } = useProductDetail(props.id);
-  const carts = useCart((state: any) => state.cart.data);
-  const addToCart = useCart((state: any) => state.addCart);
 
   return (
     <section id="section__product__detail" className="container-padding">
@@ -44,23 +42,17 @@ const CardProductDetail = (props: { id: number }) => {
                 ~ {Utils.formatDate(product.creationAt, product.updatedAt)}
               </p>
 
-              <button
-                className={`w-full mt-5 btn ${
-                  Utils.isMatchTitle(carts, product.title)
-                    ? ""
-                    : "bg-neutral-200 border-neutral-200 text-black"
-                }`}
-                onClick={() => {
-                  addToCart({
-                    id: product.id,
+              <div className="w-full mt-5">
+                <ButtonAddToCart
+                  cart={{
+                    id: Number(product.id),
                     image: product.images[0],
-                    title: product.title,
                     price: product.price,
-                  });
-                }}
-              >
-                Add to Cart
-              </button>
+                    title: product.title,
+                  }}
+                  isFull
+                />
+              </div>
             </figcaption>
           </div>
         </React.Fragment>
