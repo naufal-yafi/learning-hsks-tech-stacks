@@ -1,6 +1,5 @@
 import Link from "next/link";
-import { FiBox, FiShoppingCart } from "react-icons/fi";
-import SearchBar from "./SearchBar";
+import { FiBox, FiSearch, FiShoppingCart } from "react-icons/fi";
 
 const Header = () => {
   return (
@@ -14,7 +13,11 @@ const Header = () => {
       </div>
 
       <nav className="flex-center gap-3">
-        <SearchBar />
+        <Link href="/store/search">
+          <button className="px-2 py-2 rounded-full hover:bg-neutral-100">
+            <FiSearch size={"1.2em"} />
+          </button>
+        </Link>
 
         <Link href="/shop">
           <span className="flex-center">
