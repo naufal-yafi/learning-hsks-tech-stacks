@@ -9,7 +9,7 @@ const config: {
     products: `${process.env.NEXT_PUBLIC_API}/products`,
   },
   offset: (page: number = 0): number => {
-    return page === 1 ? 0 : (page - 1) * 12;
+    return page === 1 ? 0 : (page - 1) * config.limit;
   },
   limit: 12,
 };

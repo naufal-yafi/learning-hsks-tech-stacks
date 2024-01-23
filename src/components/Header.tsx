@@ -1,7 +1,12 @@
+"use client";
+
+import useCart from "@lib/zustand/cart";
 import Link from "next/link";
 import { FiBox, FiSearch, FiShoppingCart } from "react-icons/fi";
 
 const Header = () => {
+  const cart = useCart((state: any) => state.cart.data);
+
   return (
     <header
       id="header__container"
@@ -24,8 +29,12 @@ const Header = () => {
 
         <Link href="/store/cart">
           <span className="flex-center">
-            <p className="absolute px-2 text-xs translate-x-[14px] translate-y-[-8px] rounded-full bg-red-600 text-white">
-              0
+            <p
+              className={`absolute px-2 text-xs translate-x-[14px] translate-y-[-8px] rounded-full bg-red-600 text-white ${
+                cart.length > 0 ? "block" : "hidden"
+              }`}
+            >
+              {cart.length}
             </p>
             <FiShoppingCart size={"1.2em"} />
           </span>
