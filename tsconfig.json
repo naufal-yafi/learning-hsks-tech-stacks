@@ -19,6 +19,9 @@
     ],
     "paths": {
       "@component/*": ["./src/components/*"],
+      "@card/*": ["./src/components/Card/*"],
+      "@each_render/*": ["./src/components/EachRender/*"],
+      "@skeleton/*": ["./src/components/Loading/*"],
       "@hook/*": ["./src/hooks/*"],
       "@lib/*": ["./src/lib/*"],
       "@style": ["./src/styles/globals.css"],

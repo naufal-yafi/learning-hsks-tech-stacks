@@ -1,11 +1,11 @@
 "use client";
 
+import { Carousel } from "@each_render/Carousel";
 import useProductDetail from "@hook/useProductDetail";
 import Utils from "@lib/utils";
+import LoadingCardProductDetail from "@skeleton/LoadingCardProductDetail";
 import Link from "next/link";
 import { FiArrowLeft } from "react-icons/fi";
-import { Carousel } from "./Carousel";
-import LoadingCardProductDetail from "./Loading/LoadingCardProductDetail";
 
 const CardProductDetail = (props: { id: number }) => {
   const { product, loading } = useProductDetail(props.id);

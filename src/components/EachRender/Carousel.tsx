@@ -10,9 +10,9 @@ export const Carousel = (props: { images: string[] }) => {
       <div className="flex">
         <EachRender
           of={props.images}
-          render={(item: string) => (
+          render={(image: string) => (
             <Image
-              src={item}
+              src={image}
               alt="product image"
               width={800}
               height={1200}

@@ -1,5 +1,5 @@
+import { Carousel } from "@each_render/Carousel";
 import Link from "next/link";
-import { Carousel } from "./Carousel";
 
 const CardProduct = (props: {
   id: number | string;
