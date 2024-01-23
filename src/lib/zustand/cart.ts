@@ -2,17 +2,14 @@ import CartType from "@type/cart.type";
 import { create } from "zustand";
 
 const useCart = create((set) => ({
-  cart: [
-    {
-      id: 1,
-      image: "asdsa",
-      title: "asdasd",
-      price: 12,
-    },
-  ],
+  cart: {
+    data: [],
+  },
   addCart: (newCart: CartType) =>
-    set((state: { cart: CartType[] }) => ({
-      cart: [...state.cart, newCart],
+    set((state: { cart: { data: CartType[] } }) => ({
+      cart: {
+        data: [...state.cart.data, newCart],
+      },
     })),
 }));
 

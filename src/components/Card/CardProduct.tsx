@@ -1,4 +1,8 @@
+"use client";
+
 import { Carousel } from "@each_render/Carousel";
+import Utils from "@lib/utils";
+import useCart from "@lib/zustand/cart";
 import Link from "next/link";
 
 const CardProduct = (props: {
@@ -8,6 +12,9 @@ const CardProduct = (props: {
   description: string;
   price: number;
 }) => {
+  const carts = useCart((state: any) => state.cart.data);
+  const addToCart = useCart((state: any) => state.addCart);
+
   return (
     <div id="card__product" className="cardproduct__container">
       <Link href={`/store/${props.id}`}>
@@ -32,7 +39,23 @@ const CardProduct = (props: {
             <span className="text-xl font-bold">{props.price}</span>
           </h2>
 
-          <button className="btn">Buy Now</button>
+          <button
+            className={`btn ${
+              Utils.isMatchTitle(carts, props.title)
+                ? ""
+                : "bg-neutral-200 border-neutral-200 text-black"
+            }`}
+            onClick={() =>
+              addToCart({
+                id: props.id,
+                image: props.images[0],
+                title: props.title,
+                price: props.price,
+              })
+            }
+          >
+            Add to Cart
+          </button>
         </div>
       </figcaption>
     </div>
