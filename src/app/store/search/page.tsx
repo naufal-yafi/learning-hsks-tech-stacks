@@ -10,7 +10,7 @@ export default function SearchPage() {
   const { inputValue, clear, handleInput, clearInput, handleDeleteKey } =
     useInput();
   const { products, loading, result, isFind, loadingSearch } = useSearch(
-    inputValue.length < 4 ? "" : inputValue,
+    inputValue.length < 4 && inputValue === "    " ? "" : inputValue,
   );
 
   return (
@@ -48,51 +48,59 @@ export default function SearchPage() {
         Require input {inputValue.length}/4
       </section>
 
-      <section
-        id="search__response"
-        className={`container-padding text-center my-8 ${
-          inputValue.length > 3 && !isFind ? "block" : "hidden"
-        }`}
-      >
-        {loadingSearch ? (
-          <h1 className="text-xs">Please wait..</h1>
-        ) : (
-          <React.Fragment>
-            <h1 className="text-xl">Not Found</h1>
-            <p className="text-xs mt-2">
-              Press{" "}
-              <button
-                className="px-2 mx-1 rounded-sm bg-black text-white"
-                onClick={clearInput}
-              >
-                DELETE
-              </button>{" "}
-              to clear search.
-            </p>
-          </React.Fragment>
-        )}
-      </section>
+      {inputValue.length > 3 && inputValue.trim() === "" ? (
+        <section className="container-padding my-8 text-center text-xs">
+          Not valid input (please don&apos;t leave it blank)
+        </section>
+      ) : (
+        <React.Fragment>
+          <section
+            id="search__response"
+            className={`container-padding text-center my-8 ${
+              inputValue.length > 3 && !isFind ? "block" : "hidden"
+            }`}
+          >
+            {loadingSearch ? (
+              <h1 className="text-xs">Please wait..</h1>
+            ) : (
+              <React.Fragment>
+                <h1 className="text-xl">Not Found</h1>
+                <p className="text-xs mt-2">
+                  Press{" "}
+                  <button
+                    className="px-2 mx-1 rounded-sm bg-black text-white"
+                    onClick={clearInput}
+                  >
+                    DELETE
+                  </button>{" "}
+                  to clear search.
+                </p>
+              </React.Fragment>
+            )}
+          </section>
 
-      <div
-        id="search__result__product"
-        className={inputValue.length > 3 ? "block" : "hidden"}
-      >
-        <div
-          className={`border-t border-black mt-8 ${
-            isFind ? "block" : "hidden"
-          }`}
-        >
-          <ListAllProduct products={result} loading={loading} />
-        </div>
-      </div>
+          <div
+            id="search__result__product"
+            className={inputValue.length > 3 ? "block" : "hidden"}
+          >
+            <div
+              className={`border-t border-black mt-8 ${
+                isFind ? "block" : "hidden"
+              }`}
+            >
+              <ListAllProduct products={result} loading={loading} />
+            </div>
+          </div>
 
-      <div
-        className={`border-t border-black mt-8 ${
-          inputValue.length < 1 ? "block" : "hidden"
-        }`}
-      >
-        <ListAllProduct products={products} loading={loading} />
-      </div>
+          <div
+            className={`border-t border-black mt-8 ${
+              inputValue.length < 1 ? "block" : "hidden"
+            }`}
+          >
+            <ListAllProduct products={products} loading={loading} />
+          </div>
+        </React.Fragment>
+      )}
     </React.Fragment>
   );
 }

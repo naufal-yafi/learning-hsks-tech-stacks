@@ -74,4 +74,20 @@
   .loading__text {
     @apply h-2 col-span-2 rounded-full loading__background;
   }
+
+  .tab {
+    @apply flex flex-col lg:flex-row justify-between gap-5;
+  }
+
+  .tab__list {
+    @apply mt-2;
+  }
+
+  .tab__title {
+    @apply text-xl;
+  }
+
+  .tab__item {
+    @apply text-xs mt-2 hover:underline cursor-pointer;
+  }
 }

@@ -19,7 +19,7 @@ export default function ErrorPage({
       <ButtonBackToHome />
 
       <h1 className="text-xl">
-        <span className="text-red-600">505</span> Maybe something is wrong.
+        <span className="text-red-600">500</span> Maybe something is wrong.
       </h1>
       <p className="text-xs mt-1">
         Let&apos;s go back to the home page, maybe you are lost too or changed
