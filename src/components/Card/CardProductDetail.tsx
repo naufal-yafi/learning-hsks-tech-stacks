@@ -1,31 +1,27 @@
 "use client";
 
+import ButtonBackToHome from "@component/ButtonBackToHome";
 import { Carousel } from "@each_render/Carousel";
 import useProductDetail from "@hook/useProductDetail";
 import Utils from "@lib/utils";
 import LoadingCardProductDetail from "@skeleton/LoadingCardProductDetail";
-import Link from "next/link";
-import { FiArrowLeft } from "react-icons/fi";
+import React from "react";
 
 const CardProductDetail = (props: { id: number }) => {
   const { product, loading } = useProductDetail(props.id);
 
   return (
-    <section className="container-padding">
+    <section id="section__product__detail" className="container-padding">
       {loading ? (
         <LoadingCardProductDetail />
       ) : (
-        <>
-          <Link href="/">
-            <button className="mb-5 btn-secondary">
-              <p className="flex-center gap-4">
-                <FiArrowLeft size={"1.5em"} />
-                Home
-              </p>
-            </button>
-          </Link>
+        <React.Fragment>
+          <ButtonBackToHome />
 
-          <div className="cardproduct_detail_container">
+          <div
+            id="card__product__detail"
+            className="cardproduct_detail_container"
+          >
             <figure className="cardproduct_detail_figure">
               <Carousel images={product?.images} />
             </figure>
@@ -48,7 +44,7 @@ const CardProductDetail = (props: { id: number }) => {
               <button className="w-full mt-5 btn">Buy Now</button>
             </figcaption>
           </div>
-        </>
+        </React.Fragment>
       )}
     </section>
   );

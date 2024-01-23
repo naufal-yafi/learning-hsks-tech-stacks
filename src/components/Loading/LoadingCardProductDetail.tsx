@@ -1,9 +1,17 @@
+import React from "react";
+
 const LoadingCardProductDetail = () => {
   return (
-    <>
-      <button className="h-8 w-20 mb-5 animate-pulse btn loading__background__outline"></button>
+    <React.Fragment>
+      <button
+        id="btn__back__home"
+        className="h-8 w-20 mb-5 animate-pulse btn loading__background__outline"
+      ></button>
 
-      <div className="cardproduct_detail_container animate-pulse">
+      <div
+        id="loading__card__product__detail"
+        className="cardproduct_detail_container animate-pulse"
+      >
         <figure className="h-[250px] lg:h-[450px] cardproduct_detail_figure loading__background"></figure>
 
         <figcaption className="cardproduct_detail_figcaption">
@@ -26,7 +34,7 @@ const LoadingCardProductDetail = () => {
           <button className="h-8 mt-5 w-full btn loading__background__outline"></button>
         </figcaption>
       </div>
-    </>
+    </React.Fragment>
   );
 };
 

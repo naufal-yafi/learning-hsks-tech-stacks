@@ -9,13 +9,14 @@ const useSearch = (
   products: ProductType[];
   loading: boolean;
   result: ProductType[];
+  loadingSearch: boolean;
   isFind: boolean;
 } => {
   const { data: products, isLoading } = useSWR(
     `${config.api_url.products}?offset=1&limit=12`,
     fetcher,
   );
-  const { data: searchByTitle } = useSWR(
+  const { data: searchByTitle, isLoading: loadingSearch } = useSWR(
     `${config.api_url.products}?title=${input}`,
     fetcher,
   );
@@ -24,6 +25,7 @@ const useSearch = (
     products: products,
     loading: isLoading,
     result: searchByTitle,
+    loadingSearch: loadingSearch,
     isFind: searchByTitle?.length > 0,
   };
 };
