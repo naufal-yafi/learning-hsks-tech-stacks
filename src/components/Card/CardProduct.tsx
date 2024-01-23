@@ -9,7 +9,7 @@ const CardProduct = (props: {
   price: number;
 }) => {
   return (
-    <div className="cardproduct__container">
+    <div id="card__product" className="cardproduct__container">
       <Link href={`/store/${props.id}`}>
         <figure className="cardproduct__figure">
           <Carousel images={props.images} />

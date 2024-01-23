@@ -1,6 +1,6 @@
 const LoadingCardProduct = () => {
   return (
-    <div className="cardproduct__container">
+    <div id="loading__card__product" className="cardproduct__container">
       <figure className="animate-pulse cardproduct__figure loading__background"></figure>
 
       <figcaption className="animate-pulse cardproduct__figcaption">

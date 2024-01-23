@@ -16,10 +16,11 @@ export default function SearchPage() {
   return (
     <React.Fragment>
       <section
-        id="search__input__bar"
+        id="section__search__input"
         className="container-padding py-4 mt-12 flex-center border-t border-b border-black"
       >
         <input
+          id="search__input__bar"
           type="text"
           placeholder="Search anything product..."
           className="text-xs text-black outline-none w-full placeholder:text-black/70"

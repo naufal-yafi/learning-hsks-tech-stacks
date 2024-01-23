@@ -7,7 +7,7 @@ export const Carousel = (props: { images: string[] }) => {
   const [emblaRef] = useEmblaCarousel();
 
   return (
-    <div className="overflow-hidden" ref={emblaRef}>
+    <div id="carousel__image" className="overflow-hidden" ref={emblaRef}>
       <div className="flex">
         <EachRender
           of={props.images}

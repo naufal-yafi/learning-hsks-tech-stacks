@@ -9,7 +9,7 @@ export default function ProductDetail({
   params,
 }: Readonly<{ params: { id: string } }>) {
   return (
-    <main className="pt-20">
+    <main id="page__product__detail" className="pt-20">
       <CardProductDetail id={Number(params.id)} />
     </main>
   );
