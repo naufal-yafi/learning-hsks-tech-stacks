@@ -1,7 +1,6 @@
-"use client";
-
 import Link from "next/link";
 import { FiBox, FiShoppingCart } from "react-icons/fi";
+import SearchBar from "./SearchBar";
 
 const Header = () => {
   return (
@@ -14,7 +13,9 @@ const Header = () => {
         </Link>
       </div>
 
-      <div>
+      <nav className="flex-center gap-3">
+        <SearchBar />
+
         <Link href="/shop">
           <span className="flex-center">
             <p className="absolute px-2 text-xs translate-x-[14px] translate-y-[-8px] rounded-full bg-red-600 text-white">
@@ -23,7 +24,7 @@ const Header = () => {
             <FiShoppingCart size={"1.2em"} />
           </span>
         </Link>
-      </div>
+      </nav>
     </header>
   );
 };
