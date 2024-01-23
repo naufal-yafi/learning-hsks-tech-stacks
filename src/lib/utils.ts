@@ -9,18 +9,7 @@ const Utils = {
     });
   },
   fixUrlImg: (url: string): string => {
-    try {
-      const OBJ = JSON.parse(url);
-
-      if (OBJ && OBJ.hasOwnProperty("0")) {
-        return OBJ[0];
-      } else {
-        throw new Error("Format URL tidak sesuai");
-      }
-    } catch (error) {
-      console.log((error as Error).message);
-      return "";
-    }
+    return url.replace(/\\|\["|"]/g, "");
   },
 };
 

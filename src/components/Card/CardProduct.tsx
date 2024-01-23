@@ -16,13 +16,15 @@ const CardProduct = (props: {
         </figure>
       </Link>
       <figcaption className="cardproduct__figcaption">
-        <Link href={`/store/${props.id}`}>
-          <h1 className="text-lg line-clamp-2 hover:underline">
-            {props.title}
-          </h1>
-        </Link>
+        <div className="h-[95px] md:h-[125px] overflow-hidden">
+          <Link href={`/store/${props.id}`}>
+            <h1 className="text-lg line-clamp-2 hover:underline">
+              {props.title}
+            </h1>
+          </Link>
 
-        <p className="mt-1 text-xs line-clamp-4">{props.description}</p>
+          <p className="mt-1 text-xs line-clamp-4">{props.description}</p>
+        </div>
 
         <div className="cardproduct__footer">
           <h2>
