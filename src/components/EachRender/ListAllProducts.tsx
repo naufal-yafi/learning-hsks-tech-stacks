@@ -1,17 +1,15 @@
-"use client";
-
 import CardProduct from "@card/CardProduct";
-import useProductsPagination from "@hook/useProductsPagination";
 import EachRender from "@lib/EachRender";
 import LoadingCardProduct from "@skeleton/LoadingCardProduct";
 import ProductType from "@type/product.type";
 
-const ListAllProduct = (props: { page: number }) => {
-  const { products, loading } = useProductsPagination(props.page);
-
+const ListAllProduct = (props: {
+  products: ProductType[];
+  loading: boolean;
+}) => {
   return (
     <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
-      {loading ? (
+      {props.loading ? (
         <>
           {Array.from({ length: 12 }, (_, index) => (
             <LoadingCardProduct key={index} />
@@ -19,7 +17,7 @@ const ListAllProduct = (props: { page: number }) => {
         </>
       ) : (
         <EachRender
-          of={products}
+          of={props.products}
           render={(product: ProductType) => (
             <CardProduct
               id={product.id}
