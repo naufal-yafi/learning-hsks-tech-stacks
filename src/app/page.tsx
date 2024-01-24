@@ -13,7 +13,8 @@ export default function Home({
   const CURRENT_PAGE: number = Number(searchParams.page ?? 1);
   const { products, loading } = useProductsPagination(CURRENT_PAGE);
 
-  if (products?.length === 0) return <NotFound />;
+  const IS_EMPTY_PRODUCTS: boolean = products?.length === 0;
+  if (IS_EMPTY_PRODUCTS) return <NotFound />;
 
   return (
     <main id="page__home">

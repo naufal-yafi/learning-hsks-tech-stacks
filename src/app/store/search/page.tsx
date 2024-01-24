@@ -1,5 +1,6 @@
 "use client";
 
+import Pagination from "@component/List/Pagination";
 import useInput from "@hook/useInput";
 import useSearch from "@hook/useSearch";
 import ListAllProduct from "@list/ListAllProducts";
@@ -10,13 +11,29 @@ import ResponseValidInput from "@partial/Search/ResponseValidInput";
 import React from "react";
 import { FiX } from "react-icons/fi";
 
+type SettingsType = {
+  NOT_VALID_INPUT: boolean;
+  DISPLAY_PRODUCT_IF_INPUT_EXCEEDS_THREE_LETTERS: string;
+  DISPLAY_PRODUCT_IF_THE_INPUT_IS_STILL_EMPTY: string;
+  SHOW_X_BUTTON_IF_INPUT_IS_NOT_EMPTY: string;
+};
+
 export default function SearchPage() {
   const { inputValue, clear, handleInput, clearInput, handleDeleteKey } =
     useInput();
+  const INPUT_VALUE_LENGTH = inputValue.length;
   const { products, loading, result, isFind, loadingSearch } = useSearch(
-    inputValue.length < 4 ? "" : inputValue,
+    INPUT_VALUE_LENGTH < 4 ? "" : inputValue,
   );
-  const NOT_VALID_INPUT = inputValue.length > 3 && inputValue.trim() === "";
+
+  const settings: SettingsType = {
+    NOT_VALID_INPUT: INPUT_VALUE_LENGTH > 3 && inputValue.trim() === "",
+    DISPLAY_PRODUCT_IF_INPUT_EXCEEDS_THREE_LETTERS:
+      INPUT_VALUE_LENGTH > 3 ? "block" : "hidden",
+    DISPLAY_PRODUCT_IF_THE_INPUT_IS_STILL_EMPTY:
+      INPUT_VALUE_LENGTH < 1 ? "block" : "hidden",
+    SHOW_X_BUTTON_IF_INPUT_IS_NOT_EMPTY: clear ? "block" : "hidden",
+  };
 
   return (
     <React.Fragment>
@@ -37,21 +54,21 @@ export default function SearchPage() {
         />
 
         <button
-          className={`${clear ? "block" : "hidden"} p-2`}
+          className={`${settings.SHOW_X_BUTTON_IF_INPUT_IS_NOT_EMPTY} p-2`}
           onClick={clearInput}
         >
           <FiX size={"0.8em"} />
         </button>
       </section>
 
-      <RequireInput inputValueLength={inputValue.length} />
+      <RequireInput inputValueLength={INPUT_VALUE_LENGTH} />
 
-      {NOT_VALID_INPUT ? (
+      {settings.NOT_VALID_INPUT ? (
         <NotValidInput />
       ) : (
         <React.Fragment>
           <ResponseValidInput
-            inputValueLength={inputValue.length}
+            inputValueLength={INPUT_VALUE_LENGTH}
             isNotFind={!isFind}
             isLoading={loadingSearch}
             clearFunction={clearInput}
@@ -59,7 +76,7 @@ export default function SearchPage() {
 
           <PreviewProducts
             id="section__search__result__preview__products"
-            className={inputValue.length > 3 ? "block" : "hidden"}
+            className={settings.DISPLAY_PRODUCT_IF_INPUT_EXCEEDS_THREE_LETTERS}
           >
             <div
               className={`border-t border-black mt-8 ${
@@ -72,11 +89,10 @@ export default function SearchPage() {
 
           <PreviewProducts
             id="section__search__default__preview__products"
-            className={`border-t border-black mt-8 ${
-              inputValue.length < 1 ? "block" : "hidden"
-            }`}
+            className={`border-t border-black mt-8 ${settings.DISPLAY_PRODUCT_IF_THE_INPUT_IS_STILL_EMPTY}`}
           >
             <ListAllProduct products={products} loading={loading} />
+            <Pagination currentPage={1} />
           </PreviewProducts>
         </React.Fragment>
       )}

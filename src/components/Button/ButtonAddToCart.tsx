@@ -2,6 +2,12 @@ import Utils from "@lib/utils";
 import useCart from "@lib/zustand/cart";
 import CartType from "@type/cart.type";
 
+type SettingsType = {
+  WIDE_BUTTONS_IN_FULL_OR_NOR: string;
+  DATA_HAS_BEEN_SAVED_BUTTON_WILL_DISABLED: boolean;
+  DATA_HAS_BEEN_SAVED_BUTTON_WILL_STYLE_DISABLED: string;
+};
+
 const ButtonAddToCart = ({
   cart,
   isFull,
@@ -11,16 +17,20 @@ const ButtonAddToCart = ({
 }) => {
   const carts = useCart((state: any) => state.cart.data);
   const addToCart = useCart((state: any) => state.addCart);
-  const MATCH: boolean = Utils.isMatchTitle(carts, cart.title);
+  const IS_STORED_IN_CART: boolean = Utils.isMatchTitle(carts, cart.title);
+
+  const settings: SettingsType = {
+    WIDE_BUTTONS_IN_FULL_OR_NOR: isFull ? "w-full" : "w-auto",
+    DATA_HAS_BEEN_SAVED_BUTTON_WILL_DISABLED: IS_STORED_IN_CART,
+    DATA_HAS_BEEN_SAVED_BUTTON_WILL_STYLE_DISABLED: IS_STORED_IN_CART
+      ? "cursor-not-allowed bg-neutral-200 border-neutral-200 text-black/60"
+      : "",
+  };
 
   return (
     <button
       id="btn__add__to__cart"
-      className={`btn ${isFull ? "w-full" : "w-auto"} ${
-        MATCH
-          ? "cursor-not-allowed bg-neutral-200 border-neutral-200 text-black/60"
-          : ""
-      }`}
+      className={`btn ${settings.WIDE_BUTTONS_IN_FULL_OR_NOR} ${settings.DATA_HAS_BEEN_SAVED_BUTTON_WILL_STYLE_DISABLED}`}
       onClick={() =>
         addToCart({
           id: cart.id,
@@ -29,7 +39,7 @@ const ButtonAddToCart = ({
           price: cart.price,
         })
       }
-      disabled={MATCH}
+      disabled={settings.DATA_HAS_BEEN_SAVED_BUTTON_WILL_DISABLED}
     >
       Add to Cart
     </button>
