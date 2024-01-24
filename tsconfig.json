@@ -19,11 +19,13 @@
     ],
     "paths": {
       "@component/*": ["./src/components/*"],
+      "@button/*": ["./src/components/Button/*"],
       "@card/*": ["./src/components/Card/*"],
-      "@each_render/*": ["./src/components/EachRender/*"],
+      "@list/*": ["./src/components/List/*"],
       "@skeleton/*": ["./src/components/Loading/*"],
       "@hook/*": ["./src/hooks/*"],
       "@lib/*": ["./src/lib/*"],
+      "@partial/*": ["./src/partials/*"],
       "@style": ["./src/styles/globals.css"],
       "@type/*": ["./src/types/*"],
       "@/*": ["./src/*"]

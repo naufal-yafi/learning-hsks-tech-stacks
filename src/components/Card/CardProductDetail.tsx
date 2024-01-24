@@ -1,18 +1,18 @@
 "use client";
 
-import ButtonAddToCart from "@component/ButtonAddToCart";
-import ButtonBackToHome from "@component/ButtonBackToHome";
-import { Carousel } from "@each_render/Carousel";
+import ButtonAddToCart from "@button/ButtonAddToCart";
+import ButtonBackToHome from "@button/ButtonBackToHome";
+import { Carousel } from "@component/List/Carousel";
 import useProductDetail from "@hook/useProductDetail";
 import Utils from "@lib/utils";
 import LoadingCardProductDetail from "@skeleton/LoadingCardProductDetail";
 import React from "react";
 
-const CardProductDetail = (props: { id: number }) => {
-  const { product, loading } = useProductDetail(props.id);
+const CardProductDetail = ({ id }: { id: number }) => {
+  const { product, loading } = useProductDetail(id);
 
   return (
-    <section id="section__product__detail" className="container-padding">
+    <div id="card__product__detail">
       {loading ? (
         <LoadingCardProductDetail />
       ) : (
@@ -57,7 +57,7 @@ const CardProductDetail = (props: { id: number }) => {
           </div>
         </React.Fragment>
       )}
-    </section>
+    </div>
   );
 };
 

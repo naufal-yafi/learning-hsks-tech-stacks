@@ -1,8 +1,12 @@
 "use client";
 
-import ListAllProduct from "@component/EachRender/ListAllProducts";
 import useInput from "@hook/useInput";
 import useSearch from "@hook/useSearch";
+import ListAllProduct from "@list/ListAllProducts";
+import NotValidInput from "@partial/Search/NotValidInput";
+import PreviewProducts from "@partial/Search/PreviewProducts";
+import RequireInput from "@partial/Search/RequireInput";
+import ResponseValidInput from "@partial/Search/ResponseValidInput";
 import React from "react";
 import { FiX } from "react-icons/fi";
 
@@ -10,8 +14,9 @@ export default function SearchPage() {
   const { inputValue, clear, handleInput, clearInput, handleDeleteKey } =
     useInput();
   const { products, loading, result, isFind, loadingSearch } = useSearch(
-    inputValue.length < 4 && inputValue === "    " ? "" : inputValue,
+    inputValue.length < 4 ? "" : inputValue,
   );
+  const NOT_VALID_INPUT = inputValue.length > 3 && inputValue.trim() === "";
 
   return (
     <React.Fragment>
@@ -39,48 +44,21 @@ export default function SearchPage() {
         </button>
       </section>
 
-      <section
-        id="search__info__require__input"
-        className={`container-padding mt-2 text-xs ${
-          inputValue.length > 0 && inputValue.length < 4 ? "block" : "hidden"
-        }`}
-      >
-        Require input {inputValue.length}/4
-      </section>
+      <RequireInput inputValueLength={inputValue.length} />
 
-      {inputValue.length > 3 && inputValue.trim() === "" ? (
-        <section className="container-padding my-8 text-center text-xs">
-          Not valid input (please don&apos;t leave it blank)
-        </section>
+      {NOT_VALID_INPUT ? (
+        <NotValidInput />
       ) : (
         <React.Fragment>
-          <section
-            id="search__response"
-            className={`container-padding text-center my-8 ${
-              inputValue.length > 3 && !isFind ? "block" : "hidden"
-            }`}
-          >
-            {loadingSearch ? (
-              <h1 className="text-xs">Please wait..</h1>
-            ) : (
-              <React.Fragment>
-                <h1 className="text-xl">Not Found</h1>
-                <p className="text-xs mt-2">
-                  Press{" "}
-                  <button
-                    className="px-2 mx-1 rounded-sm bg-black text-white"
-                    onClick={clearInput}
-                  >
-                    DELETE
-                  </button>{" "}
-                  to clear search.
-                </p>
-              </React.Fragment>
-            )}
-          </section>
+          <ResponseValidInput
+            inputValueLength={inputValue.length}
+            isNotFind={!isFind}
+            isLoading={loadingSearch}
+            clearFunction={clearInput}
+          />
 
-          <div
-            id="search__result__product"
+          <PreviewProducts
+            id="section__search__result__preview__products"
             className={inputValue.length > 3 ? "block" : "hidden"}
           >
             <div
@@ -90,15 +68,16 @@ export default function SearchPage() {
             >
               <ListAllProduct products={result} loading={loading} />
             </div>
-          </div>
+          </PreviewProducts>
 
-          <div
+          <PreviewProducts
+            id="section__search__default__preview__products"
             className={`border-t border-black mt-8 ${
               inputValue.length < 1 ? "block" : "hidden"
             }`}
           >
             <ListAllProduct products={products} loading={loading} />
-          </div>
+          </PreviewProducts>
         </React.Fragment>
       )}
     </React.Fragment>

@@ -1,8 +1,8 @@
 "use client";
 
-import ListAllProduct from "@each_render/ListAllProducts";
-import Pagination from "@each_render/Pagination";
 import useProductsPagination from "@hook/useProductsPagination";
+import ListAllProduct from "@list/ListAllProducts";
+import Pagination from "@list/Pagination";
 import NotFound from "./not-found";
 
 export default function Home({
@@ -17,8 +17,13 @@ export default function Home({
 
   return (
     <main id="page__home">
-      <ListAllProduct products={products} loading={loading} />
-      <Pagination currentPage={CURRENT_PAGE} />
+      <section id="section__list__product">
+        <ListAllProduct products={products} loading={loading} />
+      </section>
+
+      <section id="section__pagination">
+        <Pagination currentPage={CURRENT_PAGE} />
+      </section>
     </main>
   );
 }

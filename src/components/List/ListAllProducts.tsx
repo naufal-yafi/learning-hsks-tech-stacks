@@ -4,16 +4,19 @@ import LoadingCardProduct from "@skeleton/LoadingCardProduct";
 import ProductType from "@type/product.type";
 import React from "react";
 
-const ListAllProduct = (props: {
+const ListAllProduct = ({
+  products,
+  loading,
+}: {
   products: ProductType[];
   loading: boolean;
 }) => {
   return (
-    <section
-      id="section_list__all__product"
+    <div
+      id="list__all__product"
       className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6"
     >
-      {props.loading ? (
+      {loading ? (
         <React.Fragment>
           {Array.from({ length: 12 }, (_, index) => (
             <LoadingCardProduct key={index} />
@@ -21,7 +24,7 @@ const ListAllProduct = (props: {
         </React.Fragment>
       ) : (
         <EachRender
-          of={props.products}
+          of={products}
           render={(product: ProductType) => (
             <CardProduct
               id={product.id}
@@ -34,7 +37,7 @@ const ListAllProduct = (props: {
           )}
         />
       )}
-    </section>
+    </div>
   );
 };
 

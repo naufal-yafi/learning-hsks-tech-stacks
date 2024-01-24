@@ -1,6 +1,6 @@
 "use client";
 
-import ButtonBackToHome from "@component/ButtonBackToHome";
+import ButtonBackToHome from "@component/Button/ButtonBackToHome";
 import { useEffect } from "react";
 
 export default function ErrorPage({
