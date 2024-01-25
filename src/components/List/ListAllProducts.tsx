@@ -1,6 +1,6 @@
-import CardProduct from "@card/CardProduct";
+import CardProduct from "@component/Card/CardProduct";
+import LoadingCardProduct from "@component/Loading/LoadingCardProduct";
 import EachRender from "@lib/EachRender";
-import LoadingCardProduct from "@skeleton/LoadingCardProduct";
 import ProductType from "@type/product.type";
 import React from "react";
 

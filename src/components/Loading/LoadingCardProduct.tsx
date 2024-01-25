@@ -15,8 +15,8 @@ const LoadingCardProduct = () => {
         </div>
 
         <div className="cardproduct__footer">
-          <button className="h-6 w-8 px-0 btn loading__background__outline"></button>
-          <button className="h-8 w-20 btn loading__background__outline"></button>
+          <div className="h-6 w-8 px-0 btn loading__background__outline"></div>
+          <div className="h-8 w-20 btn loading__background__outline"></div>
         </div>
       </figcaption>
     </div>

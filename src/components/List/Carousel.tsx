@@ -3,7 +3,7 @@ import Utils from "@lib/utils";
 import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";
 
-export const Carousel = ({ images }: { images: string[] }) => {
+const Carousel = ({ images }: { images: string[] }) => {
   const [emblaRef] = useEmblaCarousel();
 
   return (
@@ -15,9 +15,9 @@ export const Carousel = ({ images }: { images: string[] }) => {
             <Image
               src={Utils.fixUrlImg(image)}
               alt="product image"
-              width={800}
-              height={1200}
-              quality={100}
+              sizes="100vw"
+              height={220}
+              quality={80}
               className="w-full"
             />
           )}
@@ -26,3 +26,5 @@ export const Carousel = ({ images }: { images: string[] }) => {
     </div>
   );
 };
+
+export default Carousel;

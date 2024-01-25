@@ -1,5 +1,5 @@
 import ButtonAddToCart from "@button/ButtonAddToCart";
-import { Carousel } from "@component/List/Carousel";
+import Carousel from "@list/Carousel";
 import Link from "next/link";
 
 const CardProduct = ({
@@ -44,6 +44,7 @@ const CardProduct = ({
               price: price,
               title: title,
             }}
+            index={Number(id)}
           />
         </div>
       </figcaption>

@@ -11,9 +11,11 @@ type SettingsType = {
 const ButtonAddToCart = ({
   cart,
   isFull,
+  index,
 }: {
   cart: CartType;
   isFull?: boolean;
+  index: number;
 }) => {
   const carts = useCart((state: any) => state.cart.data);
   const addToCart = useCart((state: any) => state.addCart);
@@ -29,7 +31,7 @@ const ButtonAddToCart = ({
 
   return (
     <button
-      id="btn__add__to__cart"
+      id={`btn__add__to__cart__${index}`}
       className={`btn ${settings.WIDE_BUTTONS_IN_FULL_OR_NOR} ${settings.DATA_HAS_BEEN_SAVED_BUTTON_WILL_STYLE_DISABLED}`}
       onClick={() =>
         addToCart({

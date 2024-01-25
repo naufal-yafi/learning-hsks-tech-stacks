@@ -1,12 +1,17 @@
 "use client";
 
-import ButtonAddToCart from "@button/ButtonAddToCart";
 import ButtonBackToHome from "@button/ButtonBackToHome";
-import { Carousel } from "@component/List/Carousel";
+import ButtonAddToCart from "@component/Button/ButtonAddToCart";
 import useProductDetail from "@hook/useProductDetail";
 import Utils from "@lib/utils";
-import LoadingCardProductDetail from "@skeleton/LoadingCardProductDetail";
+import Carousel from "@list/Carousel";
+import dynamic from "next/dynamic";
 import React from "react";
+
+const LoadingCardProductDetail = dynamic(
+  () => import("@skeleton/LoadingCardProductDetail"),
+  { ssr: true },
+);
 
 const CardProductDetail = ({ id }: { id: number }) => {
   const { product, loading } = useProductDetail(id);
@@ -50,6 +55,7 @@ const CardProductDetail = ({ id }: { id: number }) => {
                     price: product.price,
                     title: product.title,
                   }}
+                  index={Number(product.id)}
                   isFull
                 />
               </div>

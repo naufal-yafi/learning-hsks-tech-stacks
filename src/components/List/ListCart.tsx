@@ -1,4 +1,4 @@
-import CardCart from "@card/CardCart";
+import CardCart from "@component/Card/CardCart";
 import EachRender from "@lib/EachRender";
 import CartType from "@type/cart.type";
 

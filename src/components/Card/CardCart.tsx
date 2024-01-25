@@ -18,7 +18,7 @@ const CardCart = ({ id, image, price, title }: CartType) => {
               alt="thumbnail"
               width={100}
               height={100}
-              quality={80}
+              loading="lazy"
             />
           </figure>
 

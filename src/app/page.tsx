@@ -1,9 +1,11 @@
 "use client";
 
+import ListAllProduct from "@component/List/ListAllProducts";
 import useProductsPagination from "@hook/useProductsPagination";
-import ListAllProduct from "@list/ListAllProducts";
-import Pagination from "@list/Pagination";
+import dynamic from "next/dynamic";
 import NotFound from "./not-found";
+
+const Pagination = dynamic(() => import("@list/Pagination"), { ssr: true });
 
 export default function Home({
   searchParams,
