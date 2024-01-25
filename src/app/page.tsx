@@ -1,9 +1,11 @@
 "use client";
 
-import ListAllProduct from "@each_render/ListAllProducts";
-import Pagination from "@each_render/Pagination";
+import ListAllProduct from "@component/List/ListAllProducts";
 import useProductsPagination from "@hook/useProductsPagination";
+import dynamic from "next/dynamic";
 import NotFound from "./not-found";
+
+const Pagination = dynamic(() => import("@list/Pagination"), { ssr: true });
 
 export default function Home({
   searchParams,
@@ -13,12 +15,18 @@ export default function Home({
   const CURRENT_PAGE: number = Number(searchParams.page ?? 1);
   const { products, loading } = useProductsPagination(CURRENT_PAGE);
 
-  if (products?.length === 0) return <NotFound />;
+  const IS_EMPTY_PRODUCTS: boolean = products?.length === 0;
+  if (IS_EMPTY_PRODUCTS) return <NotFound />;
 
   return (
     <main id="page__home">
-      <ListAllProduct products={products} loading={loading} />
-      <Pagination currentPage={CURRENT_PAGE} />
+      <section id="section__list__product">
+        <ListAllProduct products={products} loading={loading} />
+      </section>
+
+      <section id="section__pagination">
+        <Pagination currentPage={CURRENT_PAGE} />
+      </section>
     </main>
   );
 }

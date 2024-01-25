@@ -3,21 +3,21 @@ import Utils from "@lib/utils";
 import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";
 
-export const Carousel = (props: { images: string[] }) => {
+const Carousel = ({ images }: { images: string[] }) => {
   const [emblaRef] = useEmblaCarousel();
 
   return (
-    <div id="carousel__image" className="overflow-hidden" ref={emblaRef}>
+    <div id="list__carousel__image" className="overflow-hidden" ref={emblaRef}>
       <div className="flex">
         <EachRender
-          of={props.images}
+          of={images}
           render={(image: string) => (
             <Image
               src={Utils.fixUrlImg(image)}
               alt="product image"
-              width={800}
-              height={1200}
-              quality={100}
+              sizes="100vw"
+              height={220}
+              quality={80}
               className="w-full"
             />
           )}
@@ -26,3 +26,5 @@ export const Carousel = (props: { images: string[] }) => {
     </div>
   );
 };
+
+export default Carousel;

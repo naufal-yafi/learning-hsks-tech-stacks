@@ -8,8 +8,8 @@ const Pagination = (props: { currentPage: number }) => {
   const { pagination } = useGetPagination();
 
   return (
-    <section
-      id="section__pagination"
+    <div
+      id="list__pagination"
       className="container-padding mt-5 flex-center flex-wrap gap-1"
     >
       <EachRender
@@ -26,7 +26,7 @@ const Pagination = (props: { currentPage: number }) => {
           </Link>
         )}
       />
-    </section>
+    </div>
   );
 };
 

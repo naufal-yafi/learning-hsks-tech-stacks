@@ -4,28 +4,31 @@ import Image from "next/image";
 import Link from "next/link";
 import { FiChevronRight } from "react-icons/fi";
 
-const CardCart = (props: CartType) => {
+const CardCart = ({ id, image, price, title }: CartType) => {
   return (
-    <Link href={`/store/${props.id}`}>
-      <div className="border-l border-r border-b border-black flex-center justify-between hover:bg-neutral-100 group transition duration-500">
+    <Link href={`/store/${id}`}>
+      <div
+        id="card__cart"
+        className="border-l border-r border-b border-black flex-center justify-between hover:bg-neutral-100 group transition duration-500"
+      >
         <div className="flex-center justify-start gap-5 ">
           <figure className="w-[100px] h-[80px] overflow-hidden border-r border-black">
             <Image
-              src={Utils.fixUrlImg(props.image)}
+              src={Utils.fixUrlImg(image)}
               alt="thumbnail"
               width={100}
               height={100}
-              quality={80}
+              loading="lazy"
             />
           </figure>
 
           <figcaption>
             <h1 className="text-xs overflow-hidden truncate w-[140px] sm:w-full">
-              {props.title}
+              {title}
             </h1>
             <p>
               <span className="text-xs">$</span>
-              <span className="text-xl font-bold">{props.price}</span>
+              <span className="text-xl font-bold">{price}</span>
             </p>
           </figcaption>
         </div>

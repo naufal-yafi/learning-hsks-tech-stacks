@@ -1,17 +1,51 @@
 "use client";
 
-import ListAllProduct from "@component/EachRender/ListAllProducts";
+import ListAllProduct from "@component/List/ListAllProducts";
 import useInput from "@hook/useInput";
 import useSearch from "@hook/useSearch";
+import dynamic from "next/dynamic";
 import React from "react";
 import { FiX } from "react-icons/fi";
+
+const RequireInput = dynamic(() => import("@partial/Search/RequireInput"), {
+  ssr: true,
+});
+const NotValidInput = dynamic(() => import("@partial/Search/NotValidInput"), {
+  ssr: true,
+});
+const ResponseValidInput = dynamic(
+  () => import("@partial/Search/ResponseValidInput"),
+  { ssr: true },
+);
+const PreviewProducts = dynamic(
+  () => import("@partial/Search/PreviewProducts"),
+  { ssr: true },
+);
+const Pagination = dynamic(() => import("@list/Pagination"), { ssr: true });
+
+type SettingsType = {
+  NOT_VALID_INPUT: boolean;
+  DISPLAY_PRODUCT_IF_INPUT_EXCEEDS_THREE_LETTERS: string;
+  DISPLAY_PRODUCT_IF_THE_INPUT_IS_STILL_EMPTY: string;
+  SHOW_X_BUTTON_IF_INPUT_IS_NOT_EMPTY: string;
+};
 
 export default function SearchPage() {
   const { inputValue, clear, handleInput, clearInput, handleDeleteKey } =
     useInput();
+  const INPUT_VALUE_LENGTH = inputValue.length;
   const { products, loading, result, isFind, loadingSearch } = useSearch(
-    inputValue.length < 4 && inputValue === "    " ? "" : inputValue,
+    INPUT_VALUE_LENGTH < 4 ? "" : inputValue,
   );
+
+  const settings: SettingsType = {
+    NOT_VALID_INPUT: INPUT_VALUE_LENGTH > 3 && inputValue.trim() === "",
+    DISPLAY_PRODUCT_IF_INPUT_EXCEEDS_THREE_LETTERS:
+      INPUT_VALUE_LENGTH > 3 ? "block" : "hidden",
+    DISPLAY_PRODUCT_IF_THE_INPUT_IS_STILL_EMPTY:
+      INPUT_VALUE_LENGTH < 1 ? "block" : "hidden",
+    SHOW_X_BUTTON_IF_INPUT_IS_NOT_EMPTY: clear ? "block" : "hidden",
+  };
 
   return (
     <React.Fragment>
@@ -32,56 +66,29 @@ export default function SearchPage() {
         />
 
         <button
-          className={`${clear ? "block" : "hidden"} p-2`}
+          className={`${settings.SHOW_X_BUTTON_IF_INPUT_IS_NOT_EMPTY} p-2`}
           onClick={clearInput}
         >
           <FiX size={"0.8em"} />
         </button>
       </section>
 
-      <section
-        id="search__info__require__input"
-        className={`container-padding mt-2 text-xs ${
-          inputValue.length > 0 && inputValue.length < 4 ? "block" : "hidden"
-        }`}
-      >
-        Require input {inputValue.length}/4
-      </section>
+      <RequireInput inputValueLength={INPUT_VALUE_LENGTH} />
 
-      {inputValue.length > 3 && inputValue.trim() === "" ? (
-        <section className="container-padding my-8 text-center text-xs">
-          Not valid input (please don&apos;t leave it blank)
-        </section>
+      {settings.NOT_VALID_INPUT ? (
+        <NotValidInput />
       ) : (
         <React.Fragment>
-          <section
-            id="search__response"
-            className={`container-padding text-center my-8 ${
-              inputValue.length > 3 && !isFind ? "block" : "hidden"
-            }`}
-          >
-            {loadingSearch ? (
-              <h1 className="text-xs">Please wait..</h1>
-            ) : (
-              <React.Fragment>
-                <h1 className="text-xl">Not Found</h1>
-                <p className="text-xs mt-2">
-                  Press{" "}
-                  <button
-                    className="px-2 mx-1 rounded-sm bg-black text-white"
-                    onClick={clearInput}
-                  >
-                    DELETE
-                  </button>{" "}
-                  to clear search.
-                </p>
-              </React.Fragment>
-            )}
-          </section>
+          <ResponseValidInput
+            inputValueLength={INPUT_VALUE_LENGTH}
+            isNotFind={!isFind}
+            isLoading={loadingSearch}
+            clearFunction={clearInput}
+          />
 
-          <div
-            id="search__result__product"
-            className={inputValue.length > 3 ? "block" : "hidden"}
+          <PreviewProducts
+            id="section__search__result__preview__products"
+            className={settings.DISPLAY_PRODUCT_IF_INPUT_EXCEEDS_THREE_LETTERS}
           >
             <div
               className={`border-t border-black mt-8 ${
@@ -90,15 +97,15 @@ export default function SearchPage() {
             >
               <ListAllProduct products={result} loading={loading} />
             </div>
-          </div>
+          </PreviewProducts>
 
-          <div
-            className={`border-t border-black mt-8 ${
-              inputValue.length < 1 ? "block" : "hidden"
-            }`}
+          <PreviewProducts
+            id="section__search__default__preview__products"
+            className={`border-t border-black mt-8 ${settings.DISPLAY_PRODUCT_IF_THE_INPUT_IS_STILL_EMPTY}`}
           >
             <ListAllProduct products={products} loading={loading} />
-          </div>
+            <Pagination currentPage={1} />
+          </PreviewProducts>
         </React.Fragment>
       )}
     </React.Fragment>

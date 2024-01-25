@@ -1,18 +1,23 @@
 "use client";
 
-import ButtonAddToCart from "@component/ButtonAddToCart";
-import ButtonBackToHome from "@component/ButtonBackToHome";
-import { Carousel } from "@each_render/Carousel";
+import ButtonBackToHome from "@button/ButtonBackToHome";
+import ButtonAddToCart from "@component/Button/ButtonAddToCart";
 import useProductDetail from "@hook/useProductDetail";
 import Utils from "@lib/utils";
-import LoadingCardProductDetail from "@skeleton/LoadingCardProductDetail";
+import Carousel from "@list/Carousel";
+import dynamic from "next/dynamic";
 import React from "react";
 
-const CardProductDetail = (props: { id: number }) => {
-  const { product, loading } = useProductDetail(props.id);
+const LoadingCardProductDetail = dynamic(
+  () => import("@skeleton/LoadingCardProductDetail"),
+  { ssr: true },
+);
+
+const CardProductDetail = ({ id }: { id: number }) => {
+  const { product, loading } = useProductDetail(id);
 
   return (
-    <section id="section__product__detail" className="container-padding">
+    <div id="card__product__detail">
       {loading ? (
         <LoadingCardProductDetail />
       ) : (
@@ -50,6 +55,7 @@ const CardProductDetail = (props: { id: number }) => {
                     price: product.price,
                     title: product.title,
                   }}
+                  index={Number(product.id)}
                   isFull
                 />
               </div>
@@ -57,7 +63,7 @@ const CardProductDetail = (props: { id: number }) => {
           </div>
         </React.Fragment>
       )}
-    </section>
+    </div>
   );
 };
 

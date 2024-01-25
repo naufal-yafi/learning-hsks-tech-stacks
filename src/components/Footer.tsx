@@ -53,6 +53,11 @@ const Footer = () => {
               </Link>
             </li>
             <li className="tab__item">
+              <Link href="https://sharp.pixelplumbing.com/" target="blank">
+                Sharp
+              </Link>
+            </li>
+            <li className="tab__item">
               <Link href="https://tailwindcss.com/" target="blank">
                 TailwindCSS
               </Link>

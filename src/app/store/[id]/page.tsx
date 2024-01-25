@@ -1,4 +1,4 @@
-import CardProductDetail from "@component/Card/CardProductDetail";
+import CardProductDetail from "@card/CardProductDetail";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -10,7 +10,9 @@ export default function ProductDetail({
 }: Readonly<{ params: { id: string } }>) {
   return (
     <main id="page__product__detail" className="pt-20">
-      <CardProductDetail id={Number(params.id)} />
+      <section id="section__product__detail" className="container-padding">
+        <CardProductDetail id={Number(params.id)} />
+      </section>
     </main>
   );
 }

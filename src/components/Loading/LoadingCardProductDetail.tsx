@@ -3,10 +3,10 @@ import React from "react";
 const LoadingCardProductDetail = () => {
   return (
     <React.Fragment>
-      <button
+      <div
         id="btn__back__home"
         className="h-8 w-20 mb-5 animate-pulse btn loading__background__outline"
-      ></button>
+      ></div>
 
       <div
         id="loading__card__product__detail"
@@ -31,7 +31,7 @@ const LoadingCardProductDetail = () => {
           </div>
           <div className="w-2/5 col-span-0 mt-4 loading__text"></div>
 
-          <button className="h-8 mt-5 w-full btn loading__background__outline"></button>
+          <div className="h-8 mt-5 w-full btn loading__background__outline"></div>
         </figcaption>
       </div>
     </React.Fragment>
