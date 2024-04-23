@@ -1,4 +1,4 @@
-import Home from "../(homepage)/page";
+import Home from "@app/(homepage)/page";
 
 export default function Store({
   searchParams,

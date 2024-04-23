@@ -5,7 +5,7 @@ import { ListAllProduct } from "@list/list-all-products";
 import dynamic from "next/dynamic";
 import NotFound from "../not-found";
 
-const Pagination = dynamic(() => import("@partial/pagination"), {
+const Pagination = dynamic(() => import("@component/pagination"), {
   ssr: true,
 });
 

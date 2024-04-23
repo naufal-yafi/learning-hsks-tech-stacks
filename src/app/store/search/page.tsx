@@ -5,21 +5,16 @@ import { useSearch } from "@hook/use-search";
 import { ListAllProduct } from "@list/list-all-products";
 import dynamic from "next/dynamic";
 import { FiX } from "react-icons/fi";
+import {
+  NotValidInput,
+  PreviewProducts,
+  RequireInput,
+  ResponseValidInput,
+} from "./_partials";
 
-const RequireInput = dynamic(() => import("@search/require-input"), {
+const Pagination = dynamic(() => import("@component/pagination"), {
   ssr: true,
 });
-const NotValidInput = dynamic(() => import("@search/not-valid-input"), {
-  ssr: true,
-});
-const ResponseValidInput = dynamic(
-  () => import("@search/response-valid-input"),
-  { ssr: true },
-);
-const PreviewProducts = dynamic(() => import("@search/preview-products"), {
-  ssr: true,
-});
-const Pagination = dynamic(() => import("@partial/pagination"), { ssr: true });
 
 type SettingsType = {
   NOT_VALID_INPUT: boolean;

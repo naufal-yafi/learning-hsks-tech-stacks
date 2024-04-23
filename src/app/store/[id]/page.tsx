@@ -1,5 +1,5 @@
-import { CardProductDetail } from "@card/card-product-detail";
 import type { Metadata } from "next";
+import { CardProductDetail } from "./_partials";
 
 export const metadata: Metadata = {
   title: "Product Detail | Store",

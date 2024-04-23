@@ -1,4 +1,4 @@
-import Header from "@component/header";
+import { Header } from "@component/header";
 import "@style";
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";

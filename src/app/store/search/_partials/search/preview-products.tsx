@@ -1,4 +1,4 @@
-import React from "react";
+import { ReactNode } from "react";
 
 export default function PreviewProducts({
   id,
@@ -7,7 +7,7 @@ export default function PreviewProducts({
 }: Readonly<{
   id: string;
   className: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   return (
     <section id={id} className={className}>

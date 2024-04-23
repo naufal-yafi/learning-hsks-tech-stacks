@@ -18,6 +18,7 @@
       }
     ],
     "paths": {
+      "@app/*": ["./src/app/*"],
       "@component/*": ["./src/components/*"],
       "@button/*": ["./src/components/buttons/*"],
       "@card/*": ["./src/components/cards/*"],
@@ -26,8 +27,6 @@
       "@helper/*": ["./src/helpers/*"],
       "@hook/*": ["./src/hooks/*"],
       "@lib/*": ["./src/lib/*"],
-      "@partial/*": ["./src/partials/*"],
-      "@search/*": ["./src/partials/search/*"],
       "@service/*": ["./src/services/*"],
       "@style": ["./src/styles/globals.css"],
       "@type/*": ["./src/types/*"],
