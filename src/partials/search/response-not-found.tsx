@@ -1,4 +1,8 @@
-const ResponseNotFound = ({ clearFunction }: { clearFunction: () => void }) => {
+export default function ResponseNotFound({
+  clearFunction,
+}: Readonly<{
+  clearFunction: () => void;
+}>) {
   return (
     <div id="search__response__not__found">
       <h1 className="text-xl">Not Found</h1>
@@ -14,6 +18,4 @@ const ResponseNotFound = ({ clearFunction }: { clearFunction: () => void }) => {
       </p>
     </div>
   );
-};
-
-export default ResponseNotFound;
+}

@@ -1,10 +1,10 @@
 "use client";
 
-import useGetPagination from "@hook/use-get-pagination";
+import { useGetPagination } from "@hook/use-get-pagination";
 import { EachRender } from "@lib/common";
 import Link from "next/link";
 
-const Pagination = (props: { currentPage: number }) => {
+export default function Pagination(props: Readonly<{ currentPage: number }>) {
   const { pagination } = useGetPagination();
 
   return (
@@ -28,6 +28,4 @@ const Pagination = (props: { currentPage: number }) => {
       />
     </div>
   );
-};
-
-export default Pagination;
+}

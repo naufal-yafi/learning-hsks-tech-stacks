@@ -1,19 +1,18 @@
 "use client";
 
-import ButtonAddToCart from "@button/button-add-to-cart";
-import ButtonBackToHome from "@button/button-back-to-home";
-import useProductDetail from "@hook/use-product-detail";
+import { ButtonAddToCart } from "@button/button-add-to-cart";
+import { ButtonBackToHome } from "@button/button-back-to-home";
+import { useProductDetail } from "@hook/use-product-detail";
 import { formatDate } from "@lib/common";
-import Carousel from "@list/carousel";
+import { Carousel } from "@list/carousel";
 import dynamic from "next/dynamic";
-import React from "react";
 
 const LoadingCardProductDetail = dynamic(
   () => import("@skeleton/loading-card-product-detail"),
   { ssr: true },
 );
 
-const CardProductDetail = ({ id }: { id: number }) => {
+export function CardProductDetail({ id }: Readonly<{ id: number }>) {
   const { product, loading } = useProductDetail(id);
 
   return (
@@ -21,7 +20,7 @@ const CardProductDetail = ({ id }: { id: number }) => {
       {loading ? (
         <LoadingCardProductDetail />
       ) : (
-        <React.Fragment>
+        <>
           <ButtonBackToHome />
 
           <div
@@ -61,10 +60,8 @@ const CardProductDetail = ({ id }: { id: number }) => {
               </div>
             </figcaption>
           </div>
-        </React.Fragment>
+        </>
       )}
     </div>
   );
-};
-
-export default CardProductDetail;
+}

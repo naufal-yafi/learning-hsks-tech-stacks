@@ -1,20 +1,20 @@
-import ButtonAddToCart from "@button/button-add-to-cart";
-import Carousel from "@list/carousel";
+import { ButtonAddToCart } from "@button/button-add-to-cart";
+import { Carousel } from "@list/carousel";
 import Link from "next/link";
 
-const CardProduct = ({
+export function CardProduct({
   id,
   images,
   title,
   description,
   price,
-}: {
+}: Readonly<{
   id: number | string;
   images: string[];
   title: string;
   description: string;
   price: number;
-}) => {
+}>) {
   return (
     <div id="card__product" className="cardproduct__container">
       <Link href={`/store/${id}`}>
@@ -50,6 +50,4 @@ const CardProduct = ({
       </figcaption>
     </div>
   );
-};
-
-export default CardProduct;
+}

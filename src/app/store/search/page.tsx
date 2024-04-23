@@ -1,10 +1,9 @@
 "use client";
 
-import useInput from "@hook/use-input";
-import useSearch from "@hook/use-search";
-import ListAllProduct from "@list/list-all-products";
+import { useInput } from "@hook/use-input";
+import { useSearch } from "@hook/use-search";
+import { ListAllProduct } from "@list/list-all-products";
 import dynamic from "next/dynamic";
-import React from "react";
 import { FiX } from "react-icons/fi";
 
 const RequireInput = dynamic(() => import("@search/require-input"), {
@@ -17,10 +16,9 @@ const ResponseValidInput = dynamic(
   () => import("@search/response-valid-input"),
   { ssr: true },
 );
-const PreviewProducts = dynamic(
-  () => import("@search/preview-products"),
-  { ssr: true },
-);
+const PreviewProducts = dynamic(() => import("@search/preview-products"), {
+  ssr: true,
+});
 const Pagination = dynamic(() => import("@partial/pagination"), { ssr: true });
 
 type SettingsType = {
@@ -48,7 +46,7 @@ export default function SearchPage() {
   };
 
   return (
-    <React.Fragment>
+    <>
       <section
         id="section__search__input"
         className="container-padding py-4 mt-12 flex-center border-t border-b border-black"
@@ -78,7 +76,7 @@ export default function SearchPage() {
       {settings.NOT_VALID_INPUT ? (
         <NotValidInput />
       ) : (
-        <React.Fragment>
+        <>
           <ResponseValidInput
             inputValueLength={INPUT_VALUE_LENGTH}
             isNotFind={!isFind}
@@ -106,8 +104,8 @@ export default function SearchPage() {
             <ListAllProduct products={products} loading={loading} />
             <Pagination currentPage={1} />
           </PreviewProducts>
-        </React.Fragment>
+        </>
       )}
-    </React.Fragment>
+    </>
   );
 }

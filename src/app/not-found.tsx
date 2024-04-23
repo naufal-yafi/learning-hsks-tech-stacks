@@ -1,6 +1,6 @@
-import ButtonBackToHome from "@button/button-back-to-home";
+import { ButtonBackToHome } from "@button/button-back-to-home";
 
-const NotFound = () => {
+export default function NotFound() {
   return (
     <main className="container-padding pt-20">
       <ButtonBackToHome />
@@ -13,6 +13,4 @@ const NotFound = () => {
       </p>
     </main>
   );
-};
-
-export default NotFound;
+}

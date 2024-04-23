@@ -3,15 +3,13 @@ import fetcher from "@lib/swr/fetcher";
 import ProductType from "@type/product.type";
 import useSWR from "swr";
 
-const useSearch = (
-  input: string,
-): {
+export function useSearch(input: string): {
   products: ProductType[];
   loading: boolean;
   result: ProductType[];
   loadingSearch: boolean;
   isFind: boolean;
-} => {
+} {
   const { data: products, isLoading } = useSWR(
     `${config.api_url.products}?offset=1&limit=12`,
     fetcher,
@@ -28,6 +26,4 @@ const useSearch = (
     loadingSearch: loadingSearch,
     isFind: searchByTitle?.length > 0,
   };
-};
-
-export default useSearch;
+}

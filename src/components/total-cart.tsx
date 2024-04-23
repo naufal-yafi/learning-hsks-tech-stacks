@@ -1,7 +1,7 @@
 import { countPrice } from "@helper/common";
 import CartType from "@type/cart.type";
 
-const TotalCart = ({ carts }: { carts: CartType[] }) => {
+export function TotalCart({ carts }: Readonly<{ carts: CartType[] }>) {
   return (
     <div id="total__cart" className="container-padding">
       <div className="p-4 border-l border-r border-b border-black flex-center flex-col items-end">
@@ -17,6 +17,4 @@ const TotalCart = ({ carts }: { carts: CartType[] }) => {
       </div>
     </div>
   );
-};
-
-export default TotalCart;
+}

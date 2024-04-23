@@ -1,8 +1,6 @@
-import React from "react";
-
-const LoadingCardProductDetail = () => {
+export default function LoadingCardProductDetail() {
   return (
-    <React.Fragment>
+    <>
       <div
         id="btn__back__home"
         className="h-8 w-20 mb-5 animate-pulse btn loading__background__outline"
@@ -34,8 +32,6 @@ const LoadingCardProductDetail = () => {
           <div className="h-8 mt-5 w-full btn loading__background__outline"></div>
         </figcaption>
       </div>
-    </React.Fragment>
+    </>
   );
-};
-
-export default LoadingCardProductDetail;
+}

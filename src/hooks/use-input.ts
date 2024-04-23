@@ -1,12 +1,12 @@
 import React from "react";
 
-const useInput = (): {
+export function useInput(): {
   inputValue: string;
   handleInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
   clear: boolean;
   clearInput: () => void;
   handleDeleteKey: (e: React.KeyboardEvent<HTMLInputElement>) => void;
-} => {
+} {
   const [inputValue, setInputValue] = React.useState<string>("");
   const [clear, setClear] = React.useState<boolean>(false);
 
@@ -35,6 +35,4 @@ const useInput = (): {
     clearInput,
     handleDeleteKey,
   };
-};
-
-export default useInput;
+}

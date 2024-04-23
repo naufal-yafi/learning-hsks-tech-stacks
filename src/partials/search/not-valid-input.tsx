@@ -1,4 +1,4 @@
-const NotValidInput = () => {
+export default function NotValidInput() {
   return (
     <section
       id="section__search__not__valid__input"
@@ -7,6 +7,4 @@ const NotValidInput = () => {
       Not valid input (please don&apos;t leave it blank)
     </section>
   );
-};
-
-export default NotValidInput;
+}

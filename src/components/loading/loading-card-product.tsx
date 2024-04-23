@@ -1,4 +1,4 @@
-const LoadingCardProduct = () => {
+export default function LoadingCardProduct() {
   return (
     <div id="loading__card__product" className="cardproduct__container">
       <figure className="animate-pulse cardproduct__figure loading__background"></figure>
@@ -21,6 +21,4 @@ const LoadingCardProduct = () => {
       </figcaption>
     </div>
   );
-};
-
-export default LoadingCardProduct;
+}

@@ -8,15 +8,15 @@ type SettingsType = {
   DATA_HAS_BEEN_SAVED_BUTTON_WILL_STYLE_DISABLED: string;
 };
 
-const ButtonAddToCart = ({
+export function ButtonAddToCart({
   cart,
   isFull,
   index,
-}: {
+}: Readonly<{
   cart: CartType;
   isFull?: boolean;
   index: number;
-}) => {
+}>) {
   const carts = useCart((state: any) => state.cart.data);
   const addToCart = useCart((state: any) => state.addCart);
   const IS_STORED_IN_CART: boolean = isMatchTitle(carts, cart.title);
@@ -46,6 +46,4 @@ const ButtonAddToCart = ({
       Add to Cart
     </button>
   );
-};
-
-export default ButtonAddToCart;
+}

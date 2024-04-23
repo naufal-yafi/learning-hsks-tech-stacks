@@ -3,7 +3,7 @@ import { EachRender } from "@lib/common";
 import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";
 
-const Carousel = ({ images }: { images: string[] }) => {
+export function Carousel({ images }: Readonly<{ images: string[] }>) {
   const [emblaRef] = useEmblaCarousel();
 
   return (
@@ -26,6 +26,4 @@ const Carousel = ({ images }: { images: string[] }) => {
       </div>
     </div>
   );
-};
-
-export default Carousel;
+}

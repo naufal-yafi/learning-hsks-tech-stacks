@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FiChevronRight } from "react-icons/fi";
 
-const CardCart = ({ id, image, price, title }: CartType) => {
+export function CardCart({ id, image, price, title }: Readonly<CartType>) {
   return (
     <Link href={`/store/${id}`}>
       <div
@@ -39,6 +39,4 @@ const CardCart = ({ id, image, price, title }: CartType) => {
       </div>
     </Link>
   );
-};
-
-export default CardCart;
+}

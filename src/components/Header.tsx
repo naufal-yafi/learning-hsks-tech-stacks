@@ -4,7 +4,7 @@ import useCart from "@lib/zustand/cart";
 import Link from "next/link";
 import { FiBox, FiSearch, FiShoppingCart } from "react-icons/fi";
 
-const Header = () => {
+export function Header() {
   const cart = useCart((state: any) => state.cart.data);
 
   return (
@@ -55,6 +55,6 @@ const Header = () => {
       </nav>
     </header>
   );
-};
+}
 
 export default Header;

@@ -1,4 +1,8 @@
-const RequireInput = ({ inputValueLength }: { inputValueLength: number }) => {
+export default function RequireInput({
+  inputValueLength,
+}: Readonly<{
+  inputValueLength: number;
+}>) {
   return (
     <section
       id="section__search__require__input"
@@ -9,6 +13,4 @@ const RequireInput = ({ inputValueLength }: { inputValueLength: number }) => {
       Require input {inputValueLength}/4
     </section>
   );
-};
-
-export default RequireInput;
+}

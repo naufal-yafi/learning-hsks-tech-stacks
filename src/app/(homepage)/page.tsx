@@ -1,7 +1,7 @@
 "use client";
 
-import useProductsPagination from "@hook/use-products-pagination";
-import ListAllProduct from "@list/list-all-products";
+import { useProductsPagination } from "@hook/use-products-pagination";
+import { ListAllProduct } from "@list/list-all-products";
 import dynamic from "next/dynamic";
 import NotFound from "../not-found";
 

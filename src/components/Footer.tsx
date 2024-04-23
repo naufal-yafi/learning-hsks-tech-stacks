@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const Footer = () => {
+export default function Footer() {
   return (
     <footer className="container-padding py-10 mt-10 border-t border-black">
       <ul className="tab">
@@ -121,6 +121,4 @@ const Footer = () => {
       </ul>
     </footer>
   );
-};
-
-export default Footer;
+}

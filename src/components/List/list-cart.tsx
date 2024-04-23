@@ -1,8 +1,8 @@
-import CardCart from "@card/card-cart";
+import { CardCart } from "@card/card-cart";
 import { EachRender } from "@lib/common";
 import CartType from "@type/cart.type";
 
-const ListCart = ({ carts }: { carts: CartType[] }) => {
+export function ListCart({ carts }: Readonly<{ carts: CartType[] }>) {
   return (
     <div id="list__cart" className="container-padding">
       <EachRender
@@ -19,6 +19,4 @@ const ListCart = ({ carts }: { carts: CartType[] }) => {
       />
     </div>
   );
-};
-
-export default ListCart;
+}

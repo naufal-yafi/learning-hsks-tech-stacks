@@ -1,16 +1,16 @@
 import ResponseNotFound from "./response-not-found";
 
-const ResponseValidInput = ({
+export default function ResponseValidInput({
   inputValueLength,
   isNotFind,
   isLoading,
   clearFunction,
-}: {
+}: Readonly<{
   inputValueLength: number;
   isNotFind: boolean;
   isLoading: boolean;
   clearFunction: () => void;
-}) => {
+}>) {
   return (
     <section
       id="section__search__response__valid__input"
@@ -25,6 +25,4 @@ const ResponseValidInput = ({
       )}
     </section>
   );
-};
-
-export default ResponseValidInput;
+}

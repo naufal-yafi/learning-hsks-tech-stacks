@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { FiArrowLeft } from "react-icons/fi";
 
-const ButtonBackToHome = () => {
+export function ButtonBackToHome() {
   return (
     <Link href="/">
       <button id="btn__back__home" className="mb-5 btn-secondary">
@@ -12,6 +12,4 @@ const ButtonBackToHome = () => {
       </button>
     </Link>
   );
-};
-
-export default ButtonBackToHome;
+}
