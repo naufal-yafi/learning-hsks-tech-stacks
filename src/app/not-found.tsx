@@ -1,4 +1,4 @@
-import ButtonBackToHome from "@component/Button/ButtonBackToHome";
+import ButtonBackToHome from "@button/button-back-to-home";
 
 const NotFound = () => {
   return (

@@ -1,4 +1,4 @@
-import ResponseNotFound from "./ResponseNotFound";
+import ResponseNotFound from "./response-not-found";
 
 const ResponseValidInput = ({
   inputValueLength,

@@ -1,5 +1,5 @@
-import ButtonAddToCart from "@button/ButtonAddToCart";
-import Carousel from "@list/Carousel";
+import ButtonAddToCart from "@button/button-add-to-cart";
+import Carousel from "@list/carousel";
 import Link from "next/link";
 
 const CardProduct = ({

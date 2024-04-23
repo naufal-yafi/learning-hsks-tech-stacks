@@ -1,10 +1,10 @@
-import Header from "@component/Header";
+import Header from "@component/header";
 import "@style";
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { Poppins } from "next/font/google";
 
-const Footer = dynamic(() => import("@component/Footer"), { ssr: true });
+const Footer = dynamic(() => import("@component/footer"), { ssr: true });
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "600", "700"] });
 
 export const metadata: Metadata = {

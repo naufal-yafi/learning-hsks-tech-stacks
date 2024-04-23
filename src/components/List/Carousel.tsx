@@ -16,6 +16,7 @@ const Carousel = ({ images }: { images: string[] }) => {
               src={Utils.fixUrlImg(image)}
               alt="product image"
               sizes="100vw"
+              width={500}
               height={220}
               quality={80}
               className="w-full"

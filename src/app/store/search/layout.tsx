@@ -1,4 +1,4 @@
-import ButtonBackToHome from "@button/ButtonBackToHome";
+import ButtonBackToHome from "@button/button-back-to-home";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {

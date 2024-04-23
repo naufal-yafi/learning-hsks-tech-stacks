@@ -1,4 +1,4 @@
-import CardProductDetail from "@card/CardProductDetail";
+import CardProductDetail from "@card/card-product-detail";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {

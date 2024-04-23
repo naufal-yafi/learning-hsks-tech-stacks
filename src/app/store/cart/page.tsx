@@ -1,8 +1,8 @@
 "use client";
 
-import TotalCart from "@component/TotalCart";
+import TotalCart from "@component/total-cart";
 import useCart from "@lib/zustand/cart";
-import ListCart from "@list/ListCart";
+import ListCart from "@list/list-cart";
 import React from "react";
 
 export default function ListShop() {

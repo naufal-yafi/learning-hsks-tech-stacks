@@ -1,27 +1,27 @@
 "use client";
 
-import ListAllProduct from "@component/List/ListAllProducts";
-import useInput from "@hook/useInput";
-import useSearch from "@hook/useSearch";
+import useInput from "@hook/use-input";
+import useSearch from "@hook/use-search";
+import ListAllProduct from "@list/list-all-products";
 import dynamic from "next/dynamic";
 import React from "react";
 import { FiX } from "react-icons/fi";
 
-const RequireInput = dynamic(() => import("@partial/Search/RequireInput"), {
+const RequireInput = dynamic(() => import("@search/require-input"), {
   ssr: true,
 });
-const NotValidInput = dynamic(() => import("@partial/Search/NotValidInput"), {
+const NotValidInput = dynamic(() => import("@search/not-valid-input"), {
   ssr: true,
 });
 const ResponseValidInput = dynamic(
-  () => import("@partial/Search/ResponseValidInput"),
+  () => import("@search/response-valid-input"),
   { ssr: true },
 );
 const PreviewProducts = dynamic(
-  () => import("@partial/Search/PreviewProducts"),
+  () => import("@search/preview-products"),
   { ssr: true },
 );
-const Pagination = dynamic(() => import("@list/Pagination"), { ssr: true });
+const Pagination = dynamic(() => import("@partial/pagination"), { ssr: true });
 
 type SettingsType = {
   NOT_VALID_INPUT: boolean;

@@ -1,6 +1,6 @@
 "use client";
 
-import useGetPagination from "@hook/useGetPagination";
+import useGetPagination from "@hook/use-get-pagination";
 import EachRender from "@lib/EachRender";
 import Link from "next/link";
 

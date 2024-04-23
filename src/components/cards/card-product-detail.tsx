@@ -1,15 +1,15 @@
 "use client";
 
-import ButtonBackToHome from "@button/ButtonBackToHome";
-import ButtonAddToCart from "@component/Button/ButtonAddToCart";
-import useProductDetail from "@hook/useProductDetail";
+import ButtonAddToCart from "@button/button-add-to-cart";
+import ButtonBackToHome from "@button/button-back-to-home";
+import useProductDetail from "@hook/use-product-detail";
 import Utils from "@lib/utils";
-import Carousel from "@list/Carousel";
+import Carousel from "@list/carousel";
 import dynamic from "next/dynamic";
 import React from "react";
 
 const LoadingCardProductDetail = dynamic(
-  () => import("@skeleton/LoadingCardProductDetail"),
+  () => import("@skeleton/loading-card-product-detail"),
   { ssr: true },
 );
 
