@@ -1,5 +1,5 @@
 import CardProduct from "@card/card-product";
-import EachRender from "@lib/EachRender";
+import { EachRender } from "@lib/common";
 import LoadingCardProduct from "@skeleton/loading-card-product";
 import ProductType from "@type/product.type";
 import React from "react";

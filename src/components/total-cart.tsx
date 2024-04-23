@@ -1,4 +1,4 @@
-import Utils from "@lib/utils";
+import { countPrice } from "@helper/common";
 import CartType from "@type/cart.type";
 
 const TotalCart = ({ carts }: { carts: CartType[] }) => {
@@ -9,7 +9,7 @@ const TotalCart = ({ carts }: { carts: CartType[] }) => {
           <span className="text-xs">TOTAL</span>
           <span className="text-xl font-bold">
             <span className="text-xs font-normal">$</span>
-            {Utils.countPrice(carts)}
+            {countPrice(carts)}
           </span>
         </h2>
 

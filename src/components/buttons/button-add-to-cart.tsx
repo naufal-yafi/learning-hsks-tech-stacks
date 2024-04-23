@@ -1,4 +1,4 @@
-import Utils from "@lib/utils";
+import { isMatchTitle } from "@helper/common";
 import useCart from "@lib/zustand/cart";
 import CartType from "@type/cart.type";
 
@@ -19,7 +19,7 @@ const ButtonAddToCart = ({
 }) => {
   const carts = useCart((state: any) => state.cart.data);
   const addToCart = useCart((state: any) => state.addCart);
-  const IS_STORED_IN_CART: boolean = Utils.isMatchTitle(carts, cart.title);
+  const IS_STORED_IN_CART: boolean = isMatchTitle(carts, cart.title);
 
   const settings: SettingsType = {
     WIDE_BUTTONS_IN_FULL_OR_NOR: isFull ? "w-full" : "w-auto",

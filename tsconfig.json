@@ -23,10 +23,12 @@
       "@card/*": ["./src/components/cards/*"],
       "@list/*": ["./src/components/list/*"],
       "@skeleton/*": ["./src/components/loading/*"],
-      "@search/*": ["./src/partials/search/*"],
+      "@helper/*": ["./src/helpers/*"],
       "@hook/*": ["./src/hooks/*"],
       "@lib/*": ["./src/lib/*"],
       "@partial/*": ["./src/partials/*"],
+      "@search/*": ["./src/partials/search/*"],
+      "@service/*": ["./src/services/*"],
       "@style": ["./src/styles/globals.css"],
       "@type/*": ["./src/types/*"],
       "@/*": ["./src/*"]

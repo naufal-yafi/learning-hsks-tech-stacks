@@ -3,7 +3,7 @@
 import ButtonAddToCart from "@button/button-add-to-cart";
 import ButtonBackToHome from "@button/button-back-to-home";
 import useProductDetail from "@hook/use-product-detail";
-import Utils from "@lib/utils";
+import { formatDate } from "@lib/common";
 import Carousel from "@list/carousel";
 import dynamic from "next/dynamic";
 import React from "react";
@@ -44,7 +44,7 @@ const CardProductDetail = ({ id }: { id: number }) => {
 
               <p className="mt-2 text-xs">{product.description}</p>
               <p className="mt-1 text-[0.65rem]">
-                ~ {Utils.formatDate(product.creationAt, product.updatedAt)}
+                ~ {formatDate(product.creationAt, product.updatedAt)}
               </p>
 
               <div className="w-full mt-5">

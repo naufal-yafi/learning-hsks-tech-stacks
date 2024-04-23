@@ -1,4 +1,4 @@
-import Utils from "@lib/utils";
+import { fixUrlImg } from "@helper/common";
 import CartType from "@type/cart.type";
 import Image from "next/image";
 import Link from "next/link";
@@ -14,7 +14,7 @@ const CardCart = ({ id, image, price, title }: CartType) => {
         <div className="flex-center justify-start gap-5 ">
           <figure className="w-[100px] h-[80px] overflow-hidden border-r border-black">
             <Image
-              src={Utils.fixUrlImg(image)}
+              src={fixUrlImg(image)}
               alt="thumbnail"
               width={100}
               height={100}

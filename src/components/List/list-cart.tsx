@@ -1,5 +1,5 @@
 import CardCart from "@card/card-cart";
-import EachRender from "@lib/EachRender";
+import { EachRender } from "@lib/common";
 import CartType from "@type/cart.type";
 
 const ListCart = ({ carts }: { carts: CartType[] }) => {

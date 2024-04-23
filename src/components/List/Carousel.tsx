@@ -1,5 +1,5 @@
-import EachRender from "@lib/EachRender";
-import Utils from "@lib/utils";
+import { fixUrlImg } from "@helper/common";
+import { EachRender } from "@lib/common";
 import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";
 
@@ -13,7 +13,7 @@ const Carousel = ({ images }: { images: string[] }) => {
           of={images}
           render={(image: string) => (
             <Image
-              src={Utils.fixUrlImg(image)}
+              src={fixUrlImg(image)}
               alt="product image"
               sizes="100vw"
               width={500}
